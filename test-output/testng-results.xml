@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="9955" started-at="2017-07-06T19:59:31Z" finished-at="2017-07-06T19:59:41Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="9955" started-at="2017-07-06T19:59:31Z" finished-at="2017-07-06T19:59:41Z">
+      <class name="AdminPortal.com.AdminPortal.LoginAdminV2">
+        <test-method status="PASS" signature="TestLogin()[pri:0, instance:AdminPortal.com.AdminPortal.LoginAdminV2@cc285f4]" name="TestLogin" duration-ms="9929" started-at="2017-07-06T15:59:31Z" finished-at="2017-07-06T15:59:41Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TestLogin -->
+      </class> <!-- AdminPortal.com.AdminPortal.LoginAdminV2 -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
