@@ -2,12 +2,12 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="9955" started-at="2017-07-06T19:59:31Z" finished-at="2017-07-06T19:59:41Z">
+  <suite name="Default suite" duration-ms="11897" started-at="2017-07-07T21:41:26Z" finished-at="2017-07-07T21:41:38Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="9955" started-at="2017-07-06T19:59:31Z" finished-at="2017-07-06T19:59:41Z">
+    <test name="Default test" duration-ms="11897" started-at="2017-07-07T21:41:26Z" finished-at="2017-07-07T21:41:38Z">
       <class name="AdminPortal.com.AdminPortal.LoginAdminV2">
-        <test-method status="PASS" signature="TestLogin()[pri:0, instance:AdminPortal.com.AdminPortal.LoginAdminV2@cc285f4]" name="TestLogin" duration-ms="9929" started-at="2017-07-06T15:59:31Z" finished-at="2017-07-06T15:59:41Z">
+        <test-method status="PASS" signature="TestLogin()[pri:0, instance:AdminPortal.com.AdminPortal.LoginAdminV2@cc285f4]" name="TestLogin" duration-ms="11873" started-at="2017-07-07T17:41:26Z" finished-at="2017-07-07T17:41:38Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TestLogin -->
