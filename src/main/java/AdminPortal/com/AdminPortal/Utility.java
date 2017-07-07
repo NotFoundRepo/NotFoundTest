@@ -1,5 +1,10 @@
 package AdminPortal.com.AdminPortal;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.*;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -13,13 +18,18 @@ public class Utility
 	
 	static WebDriver wd;
 	static WebDriverWait wdwait;
-		
+	static File file;
+	static FileInputStream fileInput;
+	static Properties prop;
+	public static String fpath="C:\\AutoData\\ENV_Details.properties";
+	
 	public static void InvokeBrowser(String BType, String appurl)
 	{
+			
 		if(BType.equalsIgnoreCase("firefox"))
 		{	
 			wd = new FirefoxDriver();
-			wdwait= new WebDriverWait(wd,10);
+			wdwait= new WebDriverWait(wd,10);			
 			wd.navigate().to(appurl);
 		}
 		else if(BType.equalsIgnoreCase("chrome"))
@@ -36,30 +46,77 @@ public class Utility
 			wdwait= new WebDriverWait(wd,10);
 			wd.navigate().to(appurl);
 		}		 
-	}
-	
-	
+	}	
 	
 	public static void CloseBrowser()
 	{
 		wd.close();
-	}
-	public static void APLogin(String usrnm, String passwd)
+	}	
+	
+	public static void input_value(String oType, String oProp, String oVal)
 	{
-		wd.findElement(By.id("j_username")).sendKeys(usrnm);
-	    
-	    wd.findElement(By.id("j_password")).sendKeys(passwd);
-	    
-	    wd.findElement(By.id("button1")).click();
-	   
+		if(oType.equalsIgnoreCase("id"))
+		{
+			wd.findElement(By.id(oProp)).sendKeys(oVal);
+		}
+		else if(oType.equalsIgnoreCase("xpath"))
+		{
+			wd.findElement(By.xpath(oProp)).sendKeys(oVal);
+		}		
 	}
 	
-	public static void APLogout()
+	public static void click_object(String oType, String oProp)
 	{
-		wd.findElement(By.id("profilebox")).click();
-		wdwait.until(ExpectedConditions.elementToBeClickable(By.partialLinkText("Logout")));
-		wd.findElement(By.partialLinkText("Logout")).click();	   
+		if(oType.equalsIgnoreCase("id"))
+		{
+			wd.findElement(By.id(oProp)).click();
+		}
+		else if(oType.equalsIgnoreCase("xpath"))
+		{
+			wd.findElement(By.xpath(oProp)).click();
+		}
+		else if(oType.equalsIgnoreCase("partialLinkText"))
+		{
+			wd.findElement(By.partialLinkText(oProp)).click();
+		}
 	}
 	
+	public static void custom_wait(String oExpect, String oType, String oProp)
+	{
+		if(oExpect.equalsIgnoreCase("elementToBeClickable"))
+		{				
+			if(oType.equalsIgnoreCase("id"))
+			{
+				wdwait.until(ExpectedConditions.elementToBeClickable(By.id(oProp)));
+			}
+			else if(oType.equalsIgnoreCase("xpath"))
+			{
+				wdwait.until(ExpectedConditions.elementToBeClickable(By.xpath(oProp)));
+			}
+			else if(oType.equalsIgnoreCase("partialLinkText"))
+			{
+				wdwait.until(ExpectedConditions.elementToBeClickable(By.partialLinkText(oProp)));
+			}
+		}
+	}
+	
+	public static String read_data(String vkey)
+	{
+		file = new File(fpath);
+		fileInput = null;
+		
+		try
+		{
+			fileInput = new FileInputStream(file);
+			prop = new Properties();
+			prop.load(fileInput);
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+			
+		return prop.getProperty(vkey);		
+	}
 	
 }
