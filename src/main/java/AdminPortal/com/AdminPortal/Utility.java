@@ -12,6 +12,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.BeforeClass;
 
 public class Utility 
 {
@@ -21,7 +22,16 @@ public class Utility
 	static File file;
 	static FileInputStream fileInput;
 	static Properties prop;
-	public static String fpath="C:\\AutoData\\ENV_Details.properties";
+	public static String fpath;
+	public static String bpath;
+
+	
+	public static void Init_Env()
+	{
+		fpath=System.getProperty("user.dir")+"\\TestData\\ENV_Details.properties";
+		bpath=System.getProperty("user.dir")+"\\BrowserDrivers";
+
+	}
 	
 	public static void InvokeBrowser(String BType, String appurl)
 	{
@@ -34,14 +44,14 @@ public class Utility
 		}
 		else if(BType.equalsIgnoreCase("chrome"))
 		{
-			System.setProperty("webdriver.chrome.driver", "C:\\Browser\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", bpath+"\\chromedriver.exe");
 			wd = new ChromeDriver();
 			wdwait= new WebDriverWait(wd,10);
 			wd.navigate().to(appurl);
 		}
 		else if(BType.equalsIgnoreCase("ie"))
 		{
-			System.setProperty("webdriver.ie.driver", "C:\\Browser\\IEDriverServer.exe");
+			System.setProperty("webdriver.ie.driver", bpath+"\\IEDriverServer.exe");
 			wd = new InternetExplorerDriver();
 			wdwait= new WebDriverWait(wd,10);
 			wd.navigate().to(appurl);
